@@ -16,10 +16,10 @@ public class OrderStatusController {
 
     // orderID로 orderStatuses 조회하는 API 제공
     @RequestMapping(method= RequestMethod.GET, path="/orderStatuses/orderID")
-    public String getStatusByOrderID (@RequestParam("id") Long orderID){
+    public String getStatusByOrderID (@RequestParam("id") String orderID){
         System.out.println("##### getStatusByOrderID Start orderID: " + orderID);
 
-        List<OrderStatus> searchOrderStatus = orderStatusRepo.findByOrderId(orderID);
+        List<OrderStatus> searchOrderStatus = orderStatusRepo.findByOrderId(Long.valueOf(orderID));
 
         return searchOrderStatus.get(0).toString();
     }
